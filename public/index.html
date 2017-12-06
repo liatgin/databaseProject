@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<!-- <script type="text/javascript" src = "../connect.js"> </script> -->
+<script type="text/javascript">
+	 $(document).ready(function(){
+	var sql = ign.sql();
+	var driver = sqlite3.driver("sqlite","peserta.sqlite");
+	var qry = sqlite3.query("select * from data");
+
+	if(driver){
+	    //$(".json").html(JSON.stringify(qry));
+	    var query = qry;
+	    var html = "";
+
+	    $("p").html("Status Database Connection : "+query.status);
+	    if(query.status){
+
+	         $.each(query.content,function(data){
+	            html += "<td>"+this.no+"</td>";
+	            html += "<td>"+this.nama+"</td>";
+	            html += "<td>"+this.alamat+"</td>";
+	        });
+	    }
+
+	    $(".data").html(html);
+	}
+	});
+</script>
+<body>
+
+<form action="/action_page.php">
+  <select name="colomns">
+  	<option value="age">age</option>
+	<option value="class of worker">class of worker</option>
+	<option value="industry code">industry code</option>
+	<option value="occupation code">occupation code</option>
+	<option value="education">education</option>
+	<option value="wage per hour">wage per hour</option>
+	<option value="last education">last education</option>
+	<option value="marital status">marital status</option>
+	<option value="major industry code">major industry code</option>
+	<option value="major occupation code">major occupation code</option>
+	<option value="mace">mace</option>
+	<option value="hispanice">hispanice</option>
+	<option value="sex">sex</option>
+	<option value="member of labor">member of labor</option>
+	<option value="reason for unemployment">reason for unemployment</option>
+	<option value="fulltime">fulltime</option>
+	<option value="capital gain">capital gain</option>
+	<option value="capital loss">capital loss</option>
+	<option value="dividends">dividends</option>
+	<option value="income tax liability">income tax liability</option>
+	<option value="previous residence region">previous residence region</option>
+	<option value="previous residence state">previous residence state</option>
+	<option value="household-with-family">household-with-family</option>
+	<option value="household-simple">household-simple</option>
+	<option value="weight">weight</option>
+	<option value="msa-change">msa-change</option>
+	<option value="reg-change">reg-change</option>
+	<option value="within-reg-change">within-reg-change</option>
+	<option value="lived-here">lived-here</option>
+	<option value="migration prev res in sunbelt">migration prev res in sunbelt</option>
+	<option value="num persons worked for employer">num persons worked for employer</option>
+	<option value="family members under 118">family members under 118</option>
+	<option value="father birth country">father birth country</option>
+	<option value="mother birth country">mother birth country</option>
+	<option value="birth country">birth country</option>
+	<option value="citizenship">citizenship</option>
+	<option value="own business or self employed">own business or self employed</option>
+	<option value="fill questionnaire for veteran's admin">fill questionnaire for veteran's admin</option>
+	<option value="veterans benefits">veterans benefits</option>
+	<option value="weeks worked in year">weeks worked in year</option>
+	<option value="year">year</option>
+	<option value="salary range">salary range</option>
+  </select>
+  <br><br>
+  <input type="submit">
+
+<h2>JSON Data</h2>
+<div class="json"></div><hr> 
+<table>
+<tr>
+<td>No</td>
+<td>Nama</td>
+<td>Alamat</td>
+</tr>
+<tr class="data">
+</tr>
+</table>
+
+</body>
+</html>

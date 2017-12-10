@@ -3,29 +3,7 @@
 <script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- <script type="text/javascript" src = "../connect.js"> </script> -->
 <script type="text/javascript">
-	 $(document).ready(function(){
-	var sql = ign.sql();
-	var driver = sqlite3.driver("sqlite","peserta.sqlite");
-	var qry = sqlite3.query("select * from data");
-
-	if(driver){
-	    //$(".json").html(JSON.stringify(qry));
-	    var query = qry;
-	    var html = "";
-
-	    $("p").html("Status Database Connection : "+query.status);
-	    if(query.status){
-
-	         $.each(query.content,function(data){
-	            html += "<td>"+this.no+"</td>";
-	            html += "<td>"+this.nama+"</td>";
-	            html += "<td>"+this.alamat+"</td>";
-	        });
-	    }
-
-	    $(".data").html(html);
-	}
-	});
+	
 </script>
 <body>
 
@@ -75,19 +53,5 @@
 	<option value="salary range">salary range</option>
   </select>
   <br><br>
-  <input type="submit">
-
-<h2>JSON Data</h2>
-<div class="json"></div><hr> 
-<table>
-<tr>
-<td>No</td>
-<td>Nama</td>
-<td>Alamat</td>
-</tr>
-<tr class="data">
-</tr>
-</table>
-
 </body>
 </html>
